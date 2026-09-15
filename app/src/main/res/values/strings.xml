@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Multyfi Kotak Neo Approval</string>
-    <string name="accessibility_desc">After you approve a Multyfi trade, this helper can navigate only inside Kotak Neo to the matching stock order form, select MIS/Intraday and fill accessible order fields. It never presses Kotak Neo's final Place/Buy/Sell/Swipe/Confirm control.</string>
+    <string name="accessibility_desc">After you approve a Multyfi trade, this helper can navigate only inside Kotak Neo to the matching stock order form, select MIS/Intraday and fill accessible order fields. It never presses Kotak Neo\'s final Place/Buy/Sell/Swipe/Confirm control.</string>
 </resources>
