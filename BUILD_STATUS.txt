@@ -1,0 +1,1 @@
+v3.6 source prepared. Entry quantity is calculated on Kotak order page from live MIS Available Margin and Margin Required with 1% reserve. Final broker confirmation remains manual.

@@ -1,0 +1,17 @@
+Parser smoke tests run in the ChatGPT workspace:
+
+1) Released: Equity Intraday Trade
+   Stock Name: PERNIASPOP
+   Target: 575
+   Entry Range: 551.05-553.05
+   Stop Loss: 545
+   Result: BUY PERNIASPOP, entry 551.05-553.05, target 575, SL 545
+
+2) Book Profit : PERNIASPOP / Exit Price: 560
+   Result: exit detected for PERNIASPOP
+
+3) PERNIASPOP Update + "disciplined early exit"
+   Result: exit detected for PERNIASPOP
+
+4) Equity Intraday Trade In 15 Mins
+   Result: pre-alert detected; no entry ticket
