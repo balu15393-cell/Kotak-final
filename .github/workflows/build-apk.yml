@@ -37,5 +37,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: MultyfiKotakNeo-MultyfiPattern-NoStaticIP-v3_7-debug-apk
+          name: MultyfiKotakNeo-MultyfiPattern-NoStaticIP-v3_8-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
