@@ -11,3 +11,7 @@ For EXITS, quantity is the exact remaining live Kotak MIS position quantity.
 The helper never presses Kotak's final Place/Buy/Sell/Swipe/Confirm action. The final broker confirmation remains manual.
 
 Multyfi target and stop-loss remain exactly as advised.
+
+
+## v3.7 UI-test fix
+The in-app Test Approval flow now arms the same Kotak Accessibility navigation used by live Multyfi tickets. Test mode may navigate to and fill the Kotak MIS order form for validation, but the helper never presses the final Place/Buy/Sell/Swipe/Confirm control.

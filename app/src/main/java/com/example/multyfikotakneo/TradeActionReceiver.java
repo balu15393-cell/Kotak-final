@@ -65,7 +65,7 @@ public class TradeActionReceiver extends BroadcastReceiver {
 
                 boolean accessibilityReady = KotakOrderAccessibilityService.isEnabled(context);
                 boolean automationArmed = false;
-                if (!t.dryRun && accessibilityReady) {
+                if (accessibilityReady) {
                     try {
                         new KotakOrderAutomationStore(context).arm(t);
                         automationArmed = true;
@@ -80,10 +80,14 @@ public class TradeActionReceiver extends BroadcastReceiver {
                                 : " Ticket copied and Kotak Neo opened. Final broker confirmation remains manual."));
                 ApprovalNotifier.cancelTicket(context, t);
 
-                if (t.dryRun) {
+                if (t.dryRun && automationArmed) {
+                    ApprovalNotifier.showStatus(context,
+                            exit ? t.symbol + " — UI TEST EXIT PREP" : t.symbol + " — UI TEST ORDER PREP",
+                            "TEST MODE: opening Kotak Neo and exercising the Accessibility navigation/fill flow. The helper will stop before Kotak's final confirmation and will not submit an order.");
+                } else if (t.dryRun) {
                     ApprovalNotifier.showStatus(context,
                             exit ? t.symbol + " — TEST EXIT READY" : t.symbol + " — TEST ORDER READY",
-                            "TEST ONLY: ticket copied. Accessibility automation is not armed for test tickets.");
+                            "TEST MODE: Accessibility helper is OFF, so Kotak will only open. Enable Multyfi Kotak order helper in Android Accessibility to test order-page navigation.");
                 } else if (automationArmed) {
                     ApprovalNotifier.showStatus(context,
                             exit ? t.symbol + " — PREPARING EXIT IN KOTAK" : t.symbol + " — PREPARING ORDER IN KOTAK",

@@ -36,7 +36,6 @@ public final class KotakOrderAutomationStore {
 
     public void arm(TradeTicket ticket) throws Exception {
         if (ticket == null) throw new IllegalArgumentException("Trade ticket is missing.");
-        if (ticket.dryRun) throw new IllegalArgumentException("Test tickets are not armed for Kotak UI automation.");
         long now = System.currentTimeMillis();
         prefs.edit()
                 .putString(K_TICKET, ticket.toJson().toString())
