@@ -1,1 +1,6 @@
-v3.6 source prepared. Entry quantity is calculated on Kotak order page from live MIS Available Margin and Margin Required with 1% reserve. Final broker confirmation remains manual.
+v3.8 source update
+- Keeps test approval flow armed for Accessibility navigation.
+- Adds safe 550 ms Accessibility polling while a ticket is armed, so Kotak home/search can be detected even when no second content-change event fires.
+- Improves symbol-result matching for rows containing symbol + exchange/company name.
+- Never presses final Place/Buy/Sell/Swipe/Confirm control.
+- Android build still requires GitHub Actions/Android SDK.

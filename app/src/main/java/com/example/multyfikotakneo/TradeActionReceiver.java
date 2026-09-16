@@ -76,14 +76,14 @@ public class TradeActionReceiver extends BroadcastReceiver {
 
                 store.appendLog(exit ? "EXIT_APPROVED_OPENED_KOTAK" : "ENTRY_APPROVED_OPENED_KOTAK", t,
                         refreshed.message + (automationArmed
-                                ? " Accessibility helper armed to prepare the Kotak MIS order page. Final broker confirmation remains manual."
+                                ? " Accessibility helper armed to navigate to the Kotak MIS order page. It will stop there; final broker confirmation remains manual."
                                 : " Ticket copied and Kotak Neo opened. Final broker confirmation remains manual."));
                 ApprovalNotifier.cancelTicket(context, t);
 
                 if (t.dryRun && automationArmed) {
                     ApprovalNotifier.showStatus(context,
                             exit ? t.symbol + " — UI TEST EXIT PREP" : t.symbol + " — UI TEST ORDER PREP",
-                            "TEST MODE: opening Kotak Neo and exercising the Accessibility navigation/fill flow. The helper will stop before Kotak's final confirmation and will not submit an order.");
+                            "TEST MODE: opening Kotak Neo and exercising the Accessibility navigation flow. The helper will stop on the order page and will not submit an order.");
                 } else if (t.dryRun) {
                     ApprovalNotifier.showStatus(context,
                             exit ? t.symbol + " — TEST EXIT READY" : t.symbol + " — TEST ORDER READY",
@@ -91,7 +91,7 @@ public class TradeActionReceiver extends BroadcastReceiver {
                 } else if (automationArmed) {
                     ApprovalNotifier.showStatus(context,
                             exit ? t.symbol + " — PREPARING EXIT IN KOTAK" : t.symbol + " — PREPARING ORDER IN KOTAK",
-                            "Opening Kotak Neo. The accessibility helper will try to reach the matching MIS order page and fill safe fields, then stop before Kotak's final confirmation.");
+                            "Opening Kotak Neo. The accessibility helper will try to reach the matching MIS order page, select Intraday/MIS when exposed, and then stop. It will not fill quantity or price.");
                 } else {
                     ApprovalNotifier.showStatus(context,
                             exit ? t.symbol + " — EXIT READY" : t.symbol + " — ORDER READY",

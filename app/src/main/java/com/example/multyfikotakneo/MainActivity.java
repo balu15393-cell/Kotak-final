@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
 
         root.addView(text("Multyfi → Kotak Neo Multyfi Assistant", 22, true));
         TextView subtitle = text(
-                "Multyfi-only approval workflow: the app reads Multyfi's 15-minute pre-alert, released intraday trade, and exit/book-profit notifications. It uses the exact Multyfi entry range, target and stop-loss, checks Kotak Neo LTP/positions, and prepares an MIS intraday ticket. After APPROVE, Accessibility navigates inside Kotak Neo to the matching MIS order form. For NEW ENTRIES, quantity is calculated from Kotak's live Available Margin and Margin Required shown on the order page — not from a capital value entered in this app. It always stops before Kotak's final broker confirmation. This build never places, modifies, or cancels securities orders through the broker API.", 14, false);
+                "v3.9 navigation-only workflow: the app reads Multyfi alerts and prepares the ticket as before. After APPROVE, Accessibility opens Kotak Neo, recovers to a known Home/Search screen, searches the intended stock, opens BUY/SELL, selects Intraday/MIS when Kotak exposes it, and STOPS on the order page. It does not fill quantity or price and never presses Kotak's final confirmation.", 14, false);
         subtitle.setPadding(0, dp(8), 0, dp(14));
         root.addView(subtitle);
 
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 
 
         TextView qtyNote = text(
-                "Entry quantity is NOT taken from a manual capital field. After approval, the helper reaches Kotak Neo's MIS order form and calculates quantity from Kotak's live Available Margin and Margin Required values. A small 1% safety reserve is kept to reduce last-second margin rejection.",
+                "v3.9 is navigation-only. It does not calculate or fill quantity, price, target, or stop-loss in Kotak. Its job is only to get you to the correct stock order page and select Intraday/MIS when that control is exposed.",
                 12, false);
         qtyNote.setPadding(0, dp(8), 0, dp(4));
         root.addView(qtyNote);
@@ -300,7 +300,7 @@ public class MainActivity extends Activity {
                 "\nKotak order Accessibility: " + (accessibility ? "ON" : "OFF") +
                 "\nKotak Neo credentials: " + (creds ? "SAVED" : "MISSING") +
                 "\nKotak Neo API session: " + (session ? "READY" : "LOGIN REQUIRED") +
-                "\nOrder mode: APPROVAL → KOTAK ORDER PAGE ASSIST → MANUAL FINAL CONFIRMATION");
+                "\nOrder mode: APPROVAL → KOTAK NAVIGATION ONLY → STOP ON ORDER PAGE");
     }
 
     private boolean notificationListenerEnabled() {
